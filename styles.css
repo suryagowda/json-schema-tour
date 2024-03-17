@@ -1,0 +1,315 @@
+body {
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;;
+    margin: 0;
+    padding: 0;
+    
+    background: #FFFFFF;
+    color: #333;/* Prevent page scrolling */
+     overflow-y: hidden;/* Fix body height to viewport height */
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #ffffff;
+    color:  #123BC8;
+    box-shadow: 0px 6px 10px -4px rgba(0,0,0,.25);;
+}
+
+
+.logo img {
+    height: 40px; /* Adjust the size of the logo as needed */
+}
+
+.title h1 {
+    margin: 0;
+}
+
+.gg-menu {
+    transform: scale(var(--ggs,1));
+    color: #000;
+   }
+   
+   .gg-menu,
+   .gg-menu::after,
+   .gg-menu::before {
+    box-sizing: border-box;
+    position: relative;
+    display: block;
+    width: 20px;
+    height: 2px;
+    border-radius: 3px;
+    background: currentColor
+   }
+   
+   .gg-menu::after,
+   .gg-menu::before {
+    content: "";
+    position: absolute;
+    top: -6px
+   }
+   
+   .gg-menu::after {
+    top: 6px
+   } 
+
+
+
+h1 {
+    margin: 0;
+    font-size: 2em; /* Increase header font size */
+}
+
+
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+    
+}
+.explanation {
+    width: 45%;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff;
+    border: 5px solid #ddd;
+    height:70vh;
+    
+    max-height: calc(70vh); /* Adjust for header and padding */
+    overflow-y: auto; /* Enable vertical scrolling */
+    position: relative; /* Position relative for absolute positioning of navigation */
+}
+
+.navigation {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    
+     /* Semi-transparent background */
+    /* Shadow to separate from content */
+    display: flex;
+    justify-content: flex-start;
+}
+
+#nextButton {
+    margin-left: auto; /* Push the button to the far right */
+}
+
+#previousButton {
+    margin-right: auto; /* Push the button to the far left */
+}
+
+
+
+
+
+
+.editor {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    overflow-y: auto;
+    
+    max-height: calc(100vh - 140px);
+    position: relative;
+    width: 50%;
+    /* Add padding-bottom to create space for navigation */
+    padding-bottom: calc(20px + 10px); /* 20px for margin-top of navigation and 10px for extra spacing */
+}
+
+
+
+
+
+.ace-editor {
+    width: 100%;
+    height: 200px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border: 1px solid #090909; /* Light gray border */
+    border-radius: 5px;
+    font-size: 16px; /* Set the desired font size */
+}
+
+
+
+#result,#result2 {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #4caf50; /* Green result text color */
+}
+
+#error,#error2 {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #eb3a1f; /* Green result text color */
+}
+
+footer {
+    background-color: #007bff; /* Blue footer background */
+    padding: 20px;
+    text-align: center;
+    color: #fff; /* White text color */
+}
+
+
+.dark-bg {
+    background-color: #2b2b2b;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+
+h2, h3 {
+    color: #333;
+}
+
+p {
+    color: #555;
+}
+
+
+
+pre::-webkit-scrollbar {
+    background-color: #DED7E6;
+    height: 10px;
+ }
+ pre::-webkit-scrollbar-thumb {
+    background: #9684A3;
+    border-top-right-radius: 10px;
+ }
+/* CSS for the copy button */
+.copy-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: #007bff; /* Button background color */
+    color: #ffffff; /* Button text color */
+    border: none;
+    border-radius: 3px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.copy-btn:hover {
+    background-color: #0056b3; /* Button background color on hover */
+}
+
+
+
+/* CSS for the code snippet area */
+pre {
+    position: relative; /* Ensure proper positioning of the copy button */
+    background: #eee;
+    border-left: 10px solid #9684A3;
+    border-radius: 10px;
+    padding: 10px;
+    letter-spacing: .5px;
+    font-size: 10pt;
+    color: #000;
+}
+
+.fa-regular.fa-copy {
+    /* Your styles here */
+     /* Icon color */
+    font-size: 0.8em; /* Icon size */
+    /* Add any other styles you want to apply */
+}
+
+
+  .button {
+    padding: 12px 25px;
+    color: #fff;
+    border: 1px solid #121212;
+    background: #121212;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 50px;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    transition: all 0.5s ease;
+  }
+  .button::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    color: #121212;
+    position: absolute;
+    bottom: -100%;
+    left: 0;
+    border-radius: 50%;
+    z-index: -1;
+    transition: all 0.5s ease;
+  }
+  .button:hover {
+    background: #fff;
+    color: #121212;
+  }
+  .button:hover::after {
+    bottom: 0;
+    border-radius: 0;
+  }
+
+
+
+  .buttonn {
+    background-color:#242424;
+    color: #fff;
+    width: 15em;
+    height: 5em;
+    
+    text-align: right;
+    transition: all 0.6s ease;
+    display: flex;
+  flex-direction: column;
+  padding-top: 1.5em;
+  }
+  
+  .buttonn:hover {
+    background-color: #3654ff;
+    cursor: pointer;
+  }
+  
+  .next  svg  {
+    width: 3em;
+
+    margin: -0.2em 0.8em 1em;
+    position: absolute;
+    display: flex;
+    transition: all 0.6s ease;
+    
+  }
+  
+  .next:hover svg {
+    transform: translateX(5px);
+
+  }
+
+
+  .prev svg  {
+    width: 3em;
+    margin: -0.2em 0.8em 1em;
+    position: absolute;
+    display: flex;
+    transition: transform 0.6s ease; /* Apply transition only to transform property */
+    transform: rotate(180deg); /* Initial rotation */
+}
+
+.prev:hover svg {
+    transform: translateX(-5px) rotate(180deg); /* Translate downwards and maintain the initial rotation */
+}
+
+  
+  .text {
+    margin: 0 1em;
+    font-size:x-large;
+    font-weight: 600;
+  }

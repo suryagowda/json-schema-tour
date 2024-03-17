@@ -1,0 +1,274 @@
+{
+  "pages": [
+    {
+      "title": "Welcome to A Tour of JSON Schema",
+      "content": [
+        {
+          "h2": "Welcome to A Tour of JSON Schema"
+        },
+        {
+          "p": "This tour will guide you through the basics of JSON Schema."
+        }
+      ]
+    },
+    {
+      "title": "Introduction",
+      "content": [
+        {
+          "h2": "Introduction to JSON Schema"
+        },
+        {
+          "p": "The instance is the JSON document that is being validated or described, and the schema is the document that contains the description."
+        },
+        {
+          "p": "The most basic schema is a blank JSON object, which constrains nothing, allows anything, and describes nothing:"
+        },
+        {
+          "pre": {
+            "code": "{}"
+          }
+        },
+        {
+          "p": "By adding validation keywords to the schema, you can apply constraints to an instance. For example, you can use the"
+        },
+        {
+          "pre": {
+            "code": "{ \"type\": \"string\" }"
+          }
+        },
+        {
+          "p": "JSON Schema is hypermedia-ready and ideal for annotating your existing JSON-based HTTP API. JSON Schema documents are identified by URIs, which can be used in HTTP link headers and within JSON Schema documents to allow for recursive definitions."
+        }
+      ]
+    },
+    {
+      "title": "Create a schema definition",
+      "content": [
+        {
+          "h2": "Create a schema definition"
+        },
+        {
+          "p": "To create a basic schema definition, define the following keywords:"
+        },
+        {
+          "ul": [
+            {
+              "li": {
+                "code": "$schema: ",
+                "text": "specifies which draft of the JSON Schema standard the schema adheres to."
+              }
+            },
+            {
+              "li": {
+                "code": "$id: ",
+                "text": "sets a URI for the schema. You can use this unique URI to refer to elements of the schema from inside the same document or from external JSON documents."
+              }
+            },
+            {
+              "li": {
+                "code": "title and description: ",
+                "text": "state the intent of the schema. These keywords don’t add any constraints to the data being validated."
+              }
+            },
+            {
+              "li": {
+                "code": "type ",
+                "text": "defines the first constraint on the JSON data. In the product catalog example below, this keyword specifies that the data must be a JSON object."
+              }
+            }
+          ]
+        },
+        {
+          "p": "For example: "
+        },
+        {
+          "pre": {
+            "code": "{\n\"schema\": \"https://json-schema.org/draft/2020-12/schema\",\n\"$id\": \"https://example.com/product.schema.json\",\n\"title\": \"Product\",\n\"description\": \"A product in the catalog\",\n\"type\": \"object\"\n}"
+          }
+        },
+        {
+          "p": "The keywords are defined using JSON keys. Typically, the data being validated is contained in a JSON data document, but JSON Schema can also validate JSON data contained in other content types, such as text or XML files."
+        },
+        {
+          "p": "In JSON Schema terminology,"
+        },
+        {
+          "code": "$schema "
+        },
+        {
+          "text": "and "
+        },
+        {
+          "code": "$id "
+        },
+        {
+          "text": "are schema keywords, "
+        },
+        {
+          "code": "title "
+        },
+        {
+          "text": "and "
+        },
+        {
+          "code": "description "
+        },
+        {
+          "text": "are schema annotations, and "
+        },
+        {
+          "code": "type "
+        },
+        {
+          "text": "is a validation keyword.\n "
+        },
+        {
+          "p": ""
+        }
+      ]
+    },
+    {
+      "title": "Define properties",
+      "content": [
+        {
+          "h2": "Define properties"
+        },
+        {
+          "p": "This section adds the properties keyword. In JSON Schema terms, properties is a validation keyword. When you define properties, you create an object where each property represents a key in the JSON data that’s being validated. You can also specify which properties defined in the object are required."
+        }
+      ]
+    },
+    {
+      "title": "Adding Properties to JSON Schema",
+      "content": [
+        {
+          "h2": "Adding Properties to JSON Schema"
+        },
+        {
+          "p": "Using the product catalog example, "
+        },
+        {
+          "code": "productId"
+        },
+        {
+          "text": " is a numeric value that uniquely identifies a product. Since this is the canonical identifier for the product, it’s required."
+        },
+        {
+          "p": "To add the properties object to the schema:"
+        },
+        {
+          "p": "    1. Add the properties validation keyword to the end of the schema:"
+        },
+        {
+          "pre": {
+            "code": "{\n\"$schema\": \"https://json-schema.org/draft/2020-12/schema\",\n\"$id\": \"https://example.com/product.schema.json\",\n\"title\": \"Product\",\n\"description\": \"A product from Acme's catalog\",\n\"type\": \"object\",\n\"properties\": {\n    \"productId\": {}\n}\n}"
+          }
+        },
+        {
+          "p": "    1.Add the productId keyword, along with the following schema annotations: "
+        },
+        {
+          "ul": [
+            {
+              "li": {
+                "code": "description: ",
+                "text": "describes what productId is. In this case, it’s the product’s unique identifier."
+              }
+            },
+            {
+              "li": {
+                "code": "type :",
+                "text": "defines what kind of data is expected. For this example, since the product identifier is a numeric value, use integer."
+              }
+            }
+          ]
+        },
+        {
+          "pre": {
+            "code": "{\n\"properties\": {\n    \"productId\": {\n    \"description\": \"The unique identifier for a product\",\n    \"type\": \"integer\"\n    }\n}\n}"
+          }
+        },
+        {
+          "p": "With the new properties validation keyword, the overall schema looks like this:"
+        },
+        {
+          "pre": {
+            "code": "{\n\"$schema\": \"https://json-schema.org/draft/2020-12/schema\",\n\"$id\": \"https://example.com/product.schema.json\",\n\"title\": \"Product\",\n\"description\": \"A product from Acme's catalog\",\n\"type\": \"object\",\n\"properties\": {\n    \"productId\": {\n    \"description\": \"The unique identifier for a product\",\n    \"type\": \"integer\"\n    }\n}\n}"
+          }
+        },
+        {
+          "p": "The following example adds another required key, productName. This value is a string: "
+        },
+        {
+          "pre": {
+            "code": "{\n\"$schema\": \"https://json-schema.org/draft/2020-12/schema\",\n\"$id\": \"https://example.com/product.schema.json\",\n\"title\": \"Product\",\n\"description\": \"A product from Acme's catalog\",\n\"type\": \"object\",\n\"properties\": {\n    \"productId\": {\n    \"description\": \"The unique identifier for a product\",\n    \"type\": \"integer\"\n    },\n    \"productName\": {\n    \"description\": \"Name of the product\",\n    \"type\": \"string\"\n    }\n}\n}"
+          }
+        },
+        {
+          "p": "The properties object now includes two keys, productId and productName. When JSON data is validated against this schema, validation fails for any documents that contain invalid data in either of these fields."
+        }
+      ]
+    },
+    {
+      "title": "Define required properties",
+      "content": [
+        {
+          "h2": "Define required properties"
+        },
+        {
+          "p": "This section describes how to specify that certain properties are required. This example makes the two existing keys required and adds another required key named price. The price key has a description and type just like the other keys, but it also specifies a minimum value. Because nothing in the store is free, each product requires a price value that’s above zero. Define this using the exclusiveMinimum validation keyword."
+        },
+        {
+          "h4": "To define a required property:"
+        },
+        {
+          "ul": [
+            {
+              "li": {
+                "text":"Inside the properties object, add the price key. Include the usual schema annotations description and type, where type is a number:"
+            } 
+            },
+            {
+              "pre": {
+                "code": "\"properties\": {\n  ...\n  \"price\": {\n    \"description\": \"The price of the product\",\n    \"type\": \"number\"\n  }\n}"
+              }
+            },
+            {
+              "li":{
+                "text": "Add the exclusiveMinimum validation keyword and set the value to zero:"
+              }
+            },
+            {
+              "pre": {
+                "code": "\"price\": {\n  \"description\": \"The price of the product\",\n  \"type\": \"number\",\n  \"exclusiveMinimum\": 0\n}"
+              }
+            },
+            {
+              "li": {
+                "text": "Add the required validation keyword to the end of the schema, after the properties object. Add productID, productName, and the new price key to the array:"
+              }
+            },
+            {
+              "pre": {
+                "code": "\"properties\": {\n  ...\n  \"price\": {\n    \"description\": \"The price of the product\",\n    \"type\": \"number\",\n    \"exclusiveMinimum\": 0\n  },\n},\n\"required\": [ \"productId\", \"productName\", \"price\" ]"
+              }
+            }
+          ]
+        },
+        {
+          "p": "With the new required keyword and price key, the overall schema looks like this:"
+        },
+        {
+          "pre": {
+            "code": "{\n  \"$schema\": \"https://json-schema.org/draft/2020-12/schema\",\n  \"$id\": \"https://example.com/product.schema.json\",\n  \"title\": \"Product\",\n  \"description\": \"A product from Acme's catalog\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"productId\": {\n      \"description\": \"The unique identifier for a product\",\n      \"type\": \"integer\"\n    },\n    \"productName\": {\n      \"description\": \"Name of the product\",\n      \"type\": \"string\"\n    },\n    \"price\": {\n      \"description\": \"The price of the product\",\n      \"type\": \"number\",\n      \"exclusiveMinimum\": 0\n    }\n  },\n  \"required\": [ \"productId\", \"productName\", \"price\" ]\n}"
+          }
+        },
+        {
+          "p": "The exclusiveMinimum validation keyword is set to zero, which means that only values above zero are considered valid. To include zero as a valid option, you could use the minimum validation keyword instead."
+        }
+      ]
+    }
+    
+    
+  ]
+}
