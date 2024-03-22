@@ -8,6 +8,42 @@ body {
      overflow-y: hidden;/* Fix body height to viewport height */
 }
 
+
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px; /* Adjust as needed */
+}
+
+.buttonn {
+    background-color: #123BC8;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.buttonn.prev {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.buttonn.next {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.text {
+    display: inline-block;
+}
+
+
 .header {
     display: flex;
     justify-content: space-between;
@@ -84,26 +120,8 @@ h1 {
     position: relative; /* Position relative for absolute positioning of navigation */
 }
 
-.navigation {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    z-index: 999;
-    
-     /* Semi-transparent background */
-    /* Shadow to separate from content */
-    display: flex;
-    justify-content: flex-start;
-}
 
-#nextButton {
-    margin-left: auto; /* Push the button to the far right */
-}
 
-#previousButton {
-    margin-right: auto; /* Push the button to the far left */
-}
 
 
 
@@ -260,56 +278,41 @@ pre {
 
 
 
-  .buttonn {
-    background-color:#242424;
-    color: #fff;
-    width: 15em;
-    height: 5em;
-    
-    text-align: right;
-    transition: all 0.6s ease;
-    display: flex;
-  flex-direction: column;
-  padding-top: 1.5em;
-  }
-  
-  .buttonn:hover {
-    background-color: #3654ff;
-    cursor: pointer;
-  }
-  
-  .next  svg  {
-    width: 3em;
-
-    margin: -0.2em 0.8em 1em;
-    position: absolute;
-    display: flex;
-    transition: all 0.6s ease;
-    
-  }
-  
-  .next:hover svg {
-    transform: translateX(5px);
-
-  }
 
 
-  .prev svg  {
-    width: 3em;
-    margin: -0.2em 0.8em 1em;
-    position: absolute;
-    display: flex;
-    transition: transform 0.6s ease; /* Apply transition only to transform property */
-    transform: rotate(180deg); /* Initial rotation */
-}
+  @media screen and (max-width: 768px) {
 
-.prev:hover svg {
-    transform: translateX(-5px) rotate(180deg); /* Translate downwards and maintain the initial rotation */
-}
+    body {
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        background-color: #f7f7f7;
+        color: #333;
+        overflow-x: hidden; /* Prevent horizontal scrolling */
+      }
+    /* Hide regular navigation and display hamburger menu icon */
+    .container{
+        display: flex;
+        flex-direction: column;
+        max-width: 100%; /* Constrain content to viewport width */
+  padding: 0 20px; /* Optional padding to create space between content and screen edges */
+  margin: 0 auto;
 
-  
-  .text {
-    margin: 0 1em;
-    font-size:x-large;
-    font-weight: 600;
+    }
+
+    .explanation {
+        width: 100%;
+        max-width: 100vh;
+        
+        border-radius: 10px;
+        background-color: #fff;
+        border: 5px solid #ddd;
+        height:70vh;
+        
+        max-height: calc(70vh); /* Adjust for header and padding */
+        overflow-y: auto; /* Enable vertical scrolling */
+        position: relative; /* Position relative for absolute positioning of navigation */
+    }
+
+
   }
