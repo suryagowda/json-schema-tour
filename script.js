@@ -162,25 +162,22 @@ function copyToClipboard(button) {
         console.error("Parent pre element not found.");
         return;
     }
-
-    // Clone the pre element to modify it without affecting the original
     const preClone = pre.cloneNode(true);
 
-    // Find and remove the button element from the clone
     const buttonClone = preClone.querySelector('.copy-btn');
     if (buttonClone) {
         buttonClone.remove();
     }
 
-    // Get the text content of the modified clone
+    
     const text = preClone.textContent.trim();
 
-    // Create a temporary textarea element to hold the code snippet
+   
     const tempTextArea = document.createElement("textarea");
     tempTextArea.value = text;
     document.body.appendChild(tempTextArea);
 
-    // Select and copy the text from the textarea
+    
     tempTextArea.select();
     document.execCommand("copy");
 
@@ -193,8 +190,16 @@ function copyToClipboard(button) {
         button.textContent = "Copy";
     }, 2000); // Reset button text after 2 seconds
 }
+
+
+
 let currentPage = 0;
 const explanationPages = []; // Array to hold the explanation content for each page
+
+
+if (currentPage === 0) {
+    previousButton.style.display = "none"; // Hide Previous button on first page
+}
 
 document.addEventListener("DOMContentLoaded", function() {
     // Function to fetch JSON content from a file
@@ -304,21 +309,7 @@ document.addEventListener("DOMContentLoaded", function() {
     
     
 
-    // Function to navigate to the previous page
-    function goToPreviousPage() {
-        if (currentPage > 0) {
-            currentPage--;
-            showExplanation(currentPage);
-        }
-    }
 
-    // Function to navigate to the next page
-    function goToNextPage() {
-        if (currentPage < explanationPages.length - 1) {
-            currentPage++;
-            showExplanation(currentPage);
-        }
-    }
 
     // Attach event listeners to the previous and next buttons
     const previousButton = document.getElementById("previousButton");
@@ -345,4 +336,39 @@ document.addEventListener("DOMContentLoaded", function() {
                 console.error("Invalid JSON content format.");
             }
         });
+
+
+    
+    // Function to navigate to the previous page
+function goToPreviousPage() {
+    if (currentPage > 0) {
+        currentPage--;
+        showExplanation(currentPage);
+    }
+    updateButtonVisibility();
+}
+
+// Function to navigate to the next page
+function goToNextPage() {
+    if (currentPage < explanationPages.length - 1) {
+        currentPage++;
+        showExplanation(currentPage);
+    }
+    updateButtonVisibility();
+}
+
+// Function to update button visibility based on current page
+function updateButtonVisibility() {
+    if (currentPage === 0) {
+        previousButton.style.display = "none"; // Hide Previous button on first page
+    } else {
+        previousButton.style.display = "inline-block"; // Show Previous button on pages other than the first
+    }
+
+    if (currentPage === explanationPages.length - 1) {
+        nextButton.style.display = "none"; // Hide Next button on last page
+    } else {
+        nextButton.style.display = "inline-block"; // Show Next button on pages other than the last
+    }
+}
 });
